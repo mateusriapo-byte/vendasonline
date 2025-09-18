@@ -64,6 +64,24 @@
             letter-spacing: 1px;
         }
         
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .cart-icon-header {
+            font-size: 2.8rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        
         header p {
             font-size: 1.2rem;
             opacity: 0.9;
@@ -195,12 +213,20 @@
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
         }
         
         .buy-button:hover {
             background: linear-gradient(135deg, #2980b9, #1a5d8a);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+        }
+        
+        .buy-button::before {
+            content: "🛒";
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
         
         /* Footer */
@@ -236,6 +262,11 @@
             .product-info {
                 padding: 20px;
             }
+            
+            .title-container {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -260,7 +291,10 @@
 <body>
     <div class="container">
         <header>
-            <h1>VENDAS ONLINE</h1>
+            <div class="title-container">
+                <div class="cart-icon-header">🛒</div>
+                <h1>VENDAS ONLINE</h1>
+            </div>
             <p>As melhores novidades em um só lugar! Produtos variados e preços imbatíveis. Compra fácil | Entrega rápida. Clique e garanta já o seu!</p>
             <a href="https://www.instagram.com/vendas0nline014/" target="_blank" class="instagram-link">
                 <i class="fab fa-instagram"></i>
