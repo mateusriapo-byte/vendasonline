@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas Online - Produtos em Promoção</title>
+    <style>
+        /* Reset e Fontes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Estilos Gerais */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #1a1a2e, #162131);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Grid de Produtos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+            position: relative;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .price-container {
+            margin: 15px 0;
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .new-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 5px;
+        }
+        
+        .discount-badge {
+            background-color: #e74c3c;
+            color: white;
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .buy-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+        
+        .buy-button:hover {
+            background: linear-gradient(135deg, #2980b9, #1a5d8a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .buy-button {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .product-info {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vendas Online</h1>
+            <p>As melhores novidades em um só lugar! Produtos variados e preços imbatíveis. Compra fácil | Entrega rápida. Clique e garanta já o seu!</p>
+        </header>
+
+        <div class="products-grid">
+            <!-- Produto 1 -->
+            <div class="product-card">
+                <img src="https://placehold.co/300x220/1a1a2e/ffffff?text=Caneta+Depiladora" alt="Caneta Depiladora Premium" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Caneta Depiladora Premium</h3>
+                    <div class="price-container">
+                        <span class="old-price">R$149,99</span>
+                        <span class="new-price">R$129,99</span>
+                        <span class="discount-badge">-13%</span>
+                    </div>
+                    <a href="https://entrega.logzz.com.br/pay/mem370r3d/depilador-laser-flex-129" target="_blank" class="buy-button">Comprar Agora</a>
+                </div>
+            </div>
+
+            <!-- Produto 2 -->
+            <div class="product-card">
+                <img src="https://placehold.co/300x220/2c3e50/ffffff?text=Progressiva+Vegetal" alt="Progressiva Vegetal" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Progressiva Vegetal (Livre de Formol)</h3>
+                    <div class="price-container">
+                        <span class="new-price">R$197,00</span>
+                    </div>
+                    <a href="https://entrega.logzz.com.br/pay/memkovxk8/progcreme197" target="_blank" class="buy-button">Comprar Agora</a>
+                </div>
+            </div>
+
+            <!-- Produto 3 -->
+            <div class="product-card">
+                <img src="https://placehold.co/300x220/e74c3c/ffffff?text=Joelheira+de+Compressão" alt="Joelheira de Compressão" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Joelheira de Compressão (2 unidades)</h3>
+                    <div class="price-container">
+                        <span class="new-price">R$149,90</span>
+                    </div>
+                    <a href="https://entrega.logzz.com.br/pay/mem8yk0q2/2-unidades-joelheira-de-compressao---oferta" target="_blank" class="buy-button">Comprar Agora</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Vendas Online. Todos os direitos reservados.</p>
+            <p>Produtos com qualidade garantida e entrega rápida.</p>
+        </footer>
+    </div>
+</body>
+</html>
