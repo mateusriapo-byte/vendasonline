@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendas Online - Produtos em Promoção</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset e Fontes */
         * {
@@ -14,9 +15,10 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         /* Estilos Gerais */
@@ -28,161 +30,229 @@
         
         header {
             text-align: center;
-            padding: 30px 0;
-            background: linear-gradient(135deg, #1a1a2e, #162131);
+            padding: 40px 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
             color: white;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
             overflow: hidden;
         }
         
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
         header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ffd700, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
         
         header p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            color: #e0e0e0;
+        }
+        
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(193, 53, 132, 0.4);
+        }
+        
+        .instagram-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(193, 53, 132, 0.6);
+        }
+        
+        .instagram-link i {
+            margin-right: 10px;
+            font-size: 1.2rem;
         }
         
         /* Grid de Produtos */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             margin-top: 20px;
         }
         
         .product-card {
-            background: white;
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #eaeaea;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.2);
             position: relative;
             height: 100%;
+            backdrop-filter: blur(10px);
         }
         
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
         
         .product-image {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
         .product-card:hover .product-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .product-info {
-            padding: 20px;
+            padding: 25px;
         }
         
         .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: #2c3e50;
-            font-weight: 600;
+            font-weight: 700;
+            line-height: 1.3;
         }
         
         .price-container {
-            margin: 15px 0;
+            margin: 20px 0;
         }
         
         .old-price {
             text-decoration: line-through;
             color: #999;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 500;
         }
         
         .new-price {
-            font-size: 1.4rem;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-weight: 800;
             color: #e74c3c;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .discount-badge {
-            background-color: #e74c3c;
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
             color: white;
-            font-size: 0.8rem;
-            padding: 3px 8px;
-            border-radius: 12px;
+            font-size: 0.9rem;
+            padding: 5px 12px;
+            border-radius: 20px;
             display: inline-block;
-            margin-right: 10px;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
         }
         
         .buy-button {
             display: inline-block;
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
-            padding: 12px 25px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             width: 100%;
             text-align: center;
             margin-top: 15px;
-            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         .buy-button:hover {
             background: linear-gradient(135deg, #2980b9, #1a5d8a);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
         }
         
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
-            color: #666;
-            font-size: 0.9rem;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            background: linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+            border-radius: 20px;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         /* Media Queries */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1rem;
             }
             
             .products-grid {
                 grid-template-columns: 1fr;
             }
             
-            .buy-button {
-                font-size: 0.9rem;
+            .product-info {
+                padding: 20px;
             }
         }
         
         @media (max-width: 480px) {
             header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .container {
                 padding: 15px;
             }
             
-            .product-info {
-                padding: 15px;
+            .product-title {
+                font-size: 1.2rem;
+            }
+            
+            .new-price {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -190,14 +260,18 @@
 <body>
     <div class="container">
         <header>
-            <h1>Vendas Online</h1>
+            <h1>VENDAS ONLINE</h1>
             <p>As melhores novidades em um só lugar! Produtos variados e preços imbatíveis. Compra fácil | Entrega rápida. Clique e garanta já o seu!</p>
+            <a href="https://www.instagram.com/vendas0nline014/" target="_blank" class="instagram-link">
+                <i class="fab fa-instagram"></i>
+                Siga-nos no Instagram
+            </a>
         </header>
 
         <div class="products-grid">
             <!-- Produto 1 -->
             <div class="product-card">
-                <img src="https://placehold.co/300x220/1a1a2e/ffffff?text=Caneta+Depiladora" alt="Caneta Depiladora Premium" class="product-image">
+                <img src="img/produto1.jpeg" alt="Caneta Depiladora Premium" class="product-image" onerror="this.src='https://placehold.co/400x240/1a1a2e/ffffff?text=Caneta+Depiladora+Premium'">
                 <div class="product-info">
                     <h3 class="product-title">Caneta Depiladora Premium</h3>
                     <div class="price-container">
@@ -211,7 +285,7 @@
 
             <!-- Produto 2 -->
             <div class="product-card">
-                <img src="https://placehold.co/300x220/2c3e50/ffffff?text=Progressiva+Vegetal" alt="Progressiva Vegetal" class="product-image">
+                <img src="img/produto2.jpeg" alt="Progressiva Vegetal" class="product-image" onerror="this.src='https://placehold.co/400x240/2c3e50/ffffff?text=Progressiva+Vegetal'">
                 <div class="product-info">
                     <h3 class="product-title">Progressiva Vegetal (Livre de Formol)</h3>
                     <div class="price-container">
@@ -223,7 +297,7 @@
 
             <!-- Produto 3 -->
             <div class="product-card">
-                <img src="https://placehold.co/300x220/e74c3c/ffffff?text=Joelheira+de+Compressão" alt="Joelheira de Compressão" class="product-image">
+                <img src="img/produto3.jpeg" alt="Joelheira de Compressão" class="product-image" onerror="this.src='https://placehold.co/400x240/e74c3c/ffffff?text=Joelheira+de+Compressão'">
                 <div class="product-info">
                     <h3 class="product-title">Joelheira de Compressão (2 unidades)</h3>
                     <div class="price-container">
@@ -235,8 +309,11 @@
         </div>
 
         <footer>
-            <p>&copy; 2023 Vendas Online. Todos os direitos reservados.</p>
-            <p>Produtos com qualidade garantida e entrega rápida.</p>
+            <div class="footer-content">
+                <p>&copy; 2023 Vendas Online. Todos os direitos reservados.</p>
+                <p>Produtos com qualidade garantida e entrega rápida.</p>
+                <p><i class="fab fa-instagram"></i> Siga-nos: @vendas0nline014</p>
+            </div>
         </footer>
     </div>
 </body>
